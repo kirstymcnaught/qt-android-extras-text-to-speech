@@ -6,13 +6,17 @@ DEPLOYMENTFOLDERS = folder_01
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
 
-QT += quick androidextras
+QT += quick
+
+android {
+  QT += androidextras
+}
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    TestAndroidClient.cpp
+    TTSClient.cpp
 
 # Installation path
 # target.path =
@@ -22,13 +26,15 @@ include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
 qtcAddDeployment()
 
 HEADERS += \
-    TestAndroidClient.h
+    TTSClient.h
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-source
 
 OTHER_FILES += \
-    android-source/AndroidManifest.xml \
-    android-source/src/org/qtproject/example/textandroidextras/TestAndroidClient.java
+    android-source/AndroidManifest.xml
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES += \
+    android-source/src/org/qtproject/example/textandroidextras/AndroidTTSClient.java

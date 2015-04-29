@@ -1,6 +1,6 @@
 #include <QtGui/QGuiApplication>
 #include <QtQuick>
-#include "TestAndroidClient.h"
+#include "TTSClient.h"
 
 int main(int argc, char *argv[])
 {
@@ -8,9 +8,9 @@ int main(int argc, char *argv[])
 
     QQuickView viewer;
 
-    TestAndroidClient *testAndroidClient = new TestAndroidClient(&viewer);
-    viewer.engine()->rootContext()->setContextProperty(QLatin1String("testAndroidClient"),
-                                                     testAndroidClient);
+    TTSClient *ttsClient = new TTSClient(&viewer);
+    viewer.engine()->rootContext()->setContextProperty(QLatin1String("AndroidTTSClient"),
+                                                     ttsClient);
 
     viewer.setSource(QUrl(QStringLiteral("qrc:/qml/testAndroidExtras/main.qml")));
     viewer.show();

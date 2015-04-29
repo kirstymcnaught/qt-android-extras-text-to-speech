@@ -10,7 +10,7 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            testAndroidClient.test("Hello world")
+            AndroidTTSClient.speak("Hello world")
         }
     }
 }
