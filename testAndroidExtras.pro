@@ -14,9 +14,28 @@ android {
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 
+INCLUDEPATH += TTS
+
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp \
-    TTSClient.cpp
+SOURCES += main.cpp
+
+# The implementation of the TTSClient object is OS-dependent. The build system
+# chooses the appropriate one.
+macx {
+  SOURCES += TTS/macx/TTSClient.cpp
+}
+android {
+  SOURCES += TTS/android/TTSClient.cpp
+}
+win32 {
+  SOURCES += TTS/win/TTSClient.cpp
+}
+# Not sure if "ios" is correct flag here.
+ios {
+  SOURCES += TTS/ios/TTSClient.cpp
+}
+
+
 
 # Installation path
 # target.path =
@@ -25,8 +44,7 @@ SOURCES += main.cpp \
 include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
 qtcAddDeployment()
 
-HEADERS += \
-    TTSClient.h
+HEADERS += TTS/TTSClient.h
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-source
 
